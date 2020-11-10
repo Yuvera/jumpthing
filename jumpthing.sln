@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jumpthing", "jumpthing\jumpthing.csproj", "{433B6E60-32DF-44C5-B854-9E3B015C2DB0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{433B6E60-32DF-44C5-B854-9E3B015C2DB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{433B6E60-32DF-44C5-B854-9E3B015C2DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{433B6E60-32DF-44C5-B854-9E3B015C2DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{433B6E60-32DF-44C5-B854-9E3B015C2DB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {531A3123-5645-498F-8DAD-26D44BAE1530}
+	EndGlobalSection
+EndGlobal
