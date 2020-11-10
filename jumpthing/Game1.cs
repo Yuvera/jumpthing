@@ -38,7 +38,7 @@ namespace jumpthing
             platformSheetTxr = Content.Load<Texture2D>("JumpThing_spriteSheet2");
 
             collisionTxr = new Texture2D(GraphicsDevice, 1, 1);
-            collisionTxr.SetData(new[] Color.Red, );
+            collisionTxr.SetData(new[] { Color.Red } );
         }
 
         protected override void Update(GameTime gameTime)
