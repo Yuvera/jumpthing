@@ -1,4 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/law8/source/repos/jumpthing/jumpthing/Content/JumpThing_background.png","C:/Users/law8/source/repos/jumpthing/jumpthing/Content/bin/DesktopGL/Content/JumpThing_background.xnb","TextureProcessor","Texture2DContent",5826,1536085,1.7876441
-"C:/Users/law8/source/repos/jumpthing/jumpthing/Content/JumpThing_spriteSheet1.png","C:/Users/law8/source/repos/jumpthing/jumpthing/Content/bin/DesktopGL/Content/JumpThing_spriteSheet1.xnb","TextureProcessor","Texture2DContent",4287,73813,0.0312241
+"C:/Users/law8/source/repos/jumpthing/jumpthing/Content/JumpThing_spriteSheet1.png","C:/Users/law8/source/repos/jumpthing/jumpthing/Content/bin/DesktopGL/Content/JumpThing_spriteSheet1.xnb","TextureProcessor","Texture2DContent",3327,73813,0.8736519
 "C:/Users/law8/source/repos/jumpthing/jumpthing/Content/JumpThing_spriteSheet2.png","C:/Users/law8/source/repos/jumpthing/jumpthing/Content/bin/DesktopGL/Content/JumpThing_spriteSheet2.xnb","TextureProcessor","Texture2DContent",2398,24661,0.0447323

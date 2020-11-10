@@ -9,9 +9,12 @@ namespace jumpthing
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        Texture2D backgroundTxr, playerSheetTxr, platformSheetTxr, collisionTxr;
+        Texture2D backgroundTxr, playerSheetTxr, platformSheetTxr, whiteBox;
 
         Point screenSize = new Point(800, 450);
+
+        PlayerSprite playerSprite;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -32,13 +35,14 @@ namespace jumpthing
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
             backgroundTxr = Content.Load<Texture2D>("JumpThing_background");
             playerSheetTxr = Content.Load<Texture2D>("JumpThing_spriteSheet1");
             platformSheetTxr = Content.Load<Texture2D>("JumpThing_spriteSheet2");
 
-            collisionTxr = new Texture2D(GraphicsDevice, 1, 1);
-            collisionTxr.SetData(new[] { Color.Red } );
+            whiteBox = new Texture2D(GraphicsDevice, 1, 1);
+            whiteBox.SetData(new[] { Color.White } );
+
+            playerSprite = new PlayerSprite(playerSheetTxr, whiteBox, new Vector2(0,0));
         }
 
         protected override void Update(GameTime gameTime)
@@ -56,6 +60,8 @@ namespace jumpthing
             _spriteBatch.Begin();
 
             _spriteBatch.Draw(backgroundTxr, new Rectangle(0, 0, screenSize.X, screenSize.Y), Color.White);
+
+            playerSprite.Draw(_spriteBatch, gameTime);
 
             _spriteBatch.End();
 

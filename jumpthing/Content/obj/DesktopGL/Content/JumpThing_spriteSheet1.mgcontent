@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/law8/source/repos/jumpthing/jumpthing/Content/JumpThing_spriteSheet1.png</SourceFile>
-  <SourceTime>2019-11-11T12:28:42+00:00</SourceTime>
+  <SourceTime>2020-11-10T16:01:10.7127712+00:00</SourceTime>
   <DestFile>C:/Users/law8/source/repos/jumpthing/jumpthing/Content/bin/DesktopGL/Content/JumpThing_spriteSheet1.xnb</DestFile>
-  <DestTime>2020-11-09T15:15:47.3425578+00:00</DestTime>
+  <DestTime>2020-11-10T16:01:30.633002+00:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
