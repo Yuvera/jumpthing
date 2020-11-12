@@ -42,7 +42,7 @@ namespace jumpthing
             whiteBox = new Texture2D(GraphicsDevice, 1, 1);
             whiteBox.SetData(new[] { Color.White } );
 
-            playerSprite = new PlayerSprite(playerSheetTxr, whiteBox, new Vector2(0,0));
+            playerSprite = new PlayerSprite(playerSheetTxr, whiteBox, new Vector2(50,50));
         }
 
         protected override void Update(GameTime gameTime)
@@ -50,8 +50,9 @@ namespace jumpthing
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            playerSprite.Update(gameTime);
 
+            if (playerSprite.spritePos.Y > screenSize.Y + 50) playerSprite.ResetPlayer(new Vector2(50, 50));
             base.Update(gameTime);
         }
 
