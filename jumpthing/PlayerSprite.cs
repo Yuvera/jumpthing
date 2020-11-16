@@ -49,10 +49,58 @@ namespace jumpthing
             jumpIsPressed = false;
         }
 
-        public override void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, List<PlatformSprite> platforms)
         {
-            if ((falling || jumping) && spriteVelocity.Y < 500f) spriteVelocity.Y += 5f * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if ((falling || jumping) && spriteVelocity.Y < 500f) 
+                spriteVelocity.Y += 5f * (float)gameTime.ElapsedGameTime.TotalSeconds;
             spritePos += spriteVelocity;
+
+            bool hasCollided = false;
+
+            foreach (PlatformSprite platform in platforms)
+            {
+                if (checkCollisionBelow(platform))
+                {
+                    hasCollided = true;
+                    while (checkCollision(platform)) spritePos.Y--;
+                    spriteVelocity.Y = 0;
+                    jumping = false;
+                    falling = false;
+                }
+                else if (checkCollisionAbove(platform))
+                {
+                    hasCollided = true;
+                    while (checkCollision(platform)) spritePos.Y++;
+                    spriteVelocity.Y = 0;
+                    jumping = false;
+                    falling = true;
+                }
+
+                if (checkCollisionLeft(platform))
+                {
+                    hasCollided = true;
+                    while (checkCollision(platform)) spritePos.X--;
+                    spriteVelocity.X = 0;
+                }
+                if (checkCollisionRight(platform))
+                {
+                    hasCollided = true;
+                    while (checkCollision(platform)) spritePos.X++;
+                    spriteVelocity.X = 0;
+                }
+
+                if (!hasCollided && walking) falling = true;
+                if (jumping && spriteVelocity.Y > 0)
+                {
+                    jumping = false;
+                    falling = true;
+                }
+
+                if (walking) setAnim(1);
+                else if (falling) setAnim(3);
+                else if (jumping) setAnim(2);
+                else setAnim(0);
+            }
         }
 
         public void ResetPlayer(Vector2 newPos)
