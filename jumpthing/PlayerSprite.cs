@@ -10,8 +10,8 @@ namespace jumpthing
     class PlayerSprite : Sprite
     {
         bool jumping, walking, falling, jumpIsPressed;
-        float jumpSpeed = 150f;
-        float walkSpeed = 100f;
+        const float jumpSpeed = 3f;
+        const float walkSpeed = 100f;
 
         public PlayerSprite(Texture2D newSpriteSheet, Texture2D newCollisionTxr, Vector2 newLocation) 
             : base(newSpriteSheet, newCollisionTxr, newLocation)
@@ -20,7 +20,10 @@ namespace jumpthing
             isColliding = true;
             //drawCollision = true;
 
-            frameTime = 0.1f;
+            collisionInsetMin = new Vector2(0.25f, 0.3f);
+            collisionInsetMax = new Vector2(0.25f, 0f);
+
+            frameTime = 0.2f;
             animations = new List<List<Rectangle>>();
 
             //idle
@@ -51,8 +54,54 @@ namespace jumpthing
 
         public void Update(GameTime gameTime, List<PlatformSprite> platforms)
         {
+
+            KeyboardState keyboardState = Keyboard.GetState();
+            GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
+
+
+            if (!jumpIsPressed && !jumping && !falling &&
+            (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Space)
+                || gamePadState.IsButtonDown(Buttons.A)))
+            {
+                jumpIsPressed = true;
+                jumping = true;
+                walking = false;
+                falling = false;
+                spriteVelocity.Y -= jumpSpeed;
+
+            }
+
+            else if (jumpIsPressed && !jumping && !falling &&
+                !(keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Space)
+                || gamePadState.IsButtonDown(Buttons.A)))
+            {
+                jumpIsPressed = false;
+
+            }
+
+            if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left)
+                || gamePadState.IsButtonDown(Buttons.DPadLeft))
+            {
+                walking = true;
+                spriteVelocity.X = -walkSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                flipped = true;
+            }
+            else if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right)
+                || gamePadState.IsButtonDown(Buttons.DPadRight))
+            {
+                walking = true;
+                spriteVelocity.X = walkSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                flipped = false;
+            }
+
+            else 
+            {
+                walking = false;
+                spriteVelocity.X = 0;
+            }
+
             if ((falling || jumping) && spriteVelocity.Y < 500f) 
-                spriteVelocity.Y += 5f * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            spriteVelocity.Y += 5f * (float)gameTime.ElapsedGameTime.TotalSeconds;
             spritePos += spriteVelocity;
 
             bool hasCollided = false;
@@ -79,13 +128,13 @@ namespace jumpthing
                 if (checkCollisionLeft(platform))
                 {
                     hasCollided = true;
-                    while (checkCollision(platform)) spritePos.X--;
+                    while (checkCollision(platform)) spritePos.X++;
                     spriteVelocity.X = 0;
                 }
                 if (checkCollisionRight(platform))
                 {
                     hasCollided = true;
-                    while (checkCollision(platform)) spritePos.X++;
+                    while (checkCollision(platform)) spritePos.X--;
                     spriteVelocity.X = 0;
                 }
 
@@ -110,7 +159,7 @@ namespace jumpthing
             jumping = false;
             walking = false;
             falling = true;
-            
+
         }
     }
 }
