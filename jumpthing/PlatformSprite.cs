@@ -14,6 +14,7 @@ namespace jumpthing
         {
             spriteOrigin = new Vector2(0.5f, 0f);
             isColliding = true;
+            //drawCollision = true;
 
             animations = new List<List<Rectangle>>();
             animations.Add(new List<Rectangle>());

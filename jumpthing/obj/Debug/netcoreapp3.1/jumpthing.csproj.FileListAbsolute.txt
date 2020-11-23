@@ -24,3 +24,8 @@ C:\Users\law8\source\repos\jumpthing\jumpthing\obj\Debug\netcoreapp3.1\jumpthing
 C:\Users\law8\source\repos\jumpthing\jumpthing\obj\Debug\netcoreapp3.1\jumpthing.dll
 C:\Users\law8\source\repos\jumpthing\jumpthing\obj\Debug\netcoreapp3.1\jumpthing.pdb
 C:\Users\law8\source\repos\jumpthing\jumpthing\obj\Debug\netcoreapp3.1\jumpthing.genruntimeconfig.cache
+C:\Users\law8\source\repos\jumpthing\jumpthing\bin\Debug\netcoreapp3.1\Content\UI Font.xnb
+C:\Users\law8\source\repos\jumpthing\jumpthing\bin\Debug\netcoreapp3.1\Content\SymbolFont.xnb
+C:\Users\law8\source\repos\jumpthing\jumpthing\bin\Debug\netcoreapp3.1\Content\bump.xnb
+C:\Users\law8\source\repos\jumpthing\jumpthing\bin\Debug\netcoreapp3.1\Content\fanfare.xnb
+C:\Users\law8\source\repos\jumpthing\jumpthing\bin\Debug\netcoreapp3.1\Content\jump.xnb

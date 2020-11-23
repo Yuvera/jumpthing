@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,23 +13,32 @@ namespace jumpthing
         bool jumping, walking, falling, jumpIsPressed;
         const float jumpSpeed = 3f;
         const float walkSpeed = 100f;
+        public int lives = 3;
+        SoundEffect jumpSnd, bumpSnd;
 
-        public PlayerSprite(Texture2D newSpriteSheet, Texture2D newCollisionTxr, Vector2 newLocation) 
+        public PlayerSprite(Texture2D newSpriteSheet, Texture2D newCollisionTxr, Vector2 newLocation, SoundEffect newJumpSnd, SoundEffect newBumpSnd) 
             : base(newSpriteSheet, newCollisionTxr, newLocation)
         {
+            jumpSnd = newJumpSnd;
+            bumpSnd = newBumpSnd;
+
             spriteOrigin = new Vector2(0.5f, 1f);
             isColliding = true;
             //drawCollision = true;
 
             collisionInsetMin = new Vector2(0.25f, 0.3f);
-            collisionInsetMax = new Vector2(0.25f, 0f);
+            collisionInsetMax = new Vector2(0.25f, 0.03f);
 
-            frameTime = 0.2f;
+            frameTime = 0.1f;
             animations = new List<List<Rectangle>>();
 
             //idle
             animations.Add(new List<Rectangle>());
             animations[0].Add(new Rectangle(0, 0, 48, 48));
+            animations[0].Add(new Rectangle(0, 0, 48, 48));
+            animations[0].Add(new Rectangle(0, 0, 48, 48));
+            animations[0].Add(new Rectangle(48, 0, 48, 48));
+            animations[0].Add(new Rectangle(48, 0, 48, 48));
             animations[0].Add(new Rectangle(48, 0, 48, 48));
 
             //walking
@@ -68,7 +78,7 @@ namespace jumpthing
                 walking = false;
                 falling = false;
                 spriteVelocity.Y -= jumpSpeed;
-
+                jumpSnd.Play();
             }
 
             else if (jumpIsPressed && !jumping && !falling &&
@@ -110,6 +120,7 @@ namespace jumpthing
             {
                 if (checkCollisionBelow(platform))
                 {
+                    bumpSnd.Play();
                     hasCollided = true;
                     while (checkCollision(platform)) spritePos.Y--;
                     spriteVelocity.Y = 0;
@@ -155,7 +166,7 @@ namespace jumpthing
         public void ResetPlayer(Vector2 newPos)
         {
             spritePos = newPos;
-            spriteVelocity = new Vector2(0, 0);
+            spriteVelocity = new Vector2();
             jumping = false;
             walking = false;
             falling = true;
