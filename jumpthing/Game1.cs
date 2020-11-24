@@ -73,6 +73,8 @@ namespace jumpthing
                 {
                     playerSprite.lives = 3;
                     levelNumber = 0;
+                    coinSprite.spritePos = coins[levelNumber];
+
                 }
                 playerSprite.ResetPlayer(new Vector2(100, 50));
             }
